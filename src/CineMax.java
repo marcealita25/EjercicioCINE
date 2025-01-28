@@ -19,8 +19,33 @@ public class CineMax {
 
     public static void main(String[] args) {
         
-        Sala sala = new Sala(2, "tiburon2", null)
-    }
+        Sala sala1 = new Sala(1, "tiburon", null);
+        Sala sala2 = new Sala(2, "101 Dalmatas", null);
+        Sala sala3 = new Sala(3, "Srek", null);
+
+        Sala[] salas ={sala1, sala2, sala3};
+
+        for (Sala sala : salas) {
+           System.out.println(sala.getNumero());
+
+            System.out.println(sala.getTituloPelicula());
+
+            System.out.println("-------------------------------------");
+
+        }
+
+        Espectador  espectador1 = new Espectador(null, null);
+        Espectador  espectador2= new Espectador(null, null);
+        Espectador  espectador3= new Espectador(null, null);
+
+
+
+
+    }   
+
+
+
+
 
 
 
