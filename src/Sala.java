@@ -4,13 +4,15 @@ public class Sala {
 
     private String tituloPelicula;
 
-    private int [][] butacas;
+    private Espectador[][] butacas;
 
-    public Sala(int numero, String tituloPelicula, int[][] butacas) {
+    public Sala(int numero, String tituloPelicula, Espectador[][] butacas) {
         this.numero = numero;
         this.tituloPelicula = tituloPelicula;
-        this.butacas = butacas;
+        this .butacas = new Espectador[filas][columnas];
     }
+
+
 
     public int getNumero() {
         return numero;

@@ -15,6 +15,11 @@ public class Espectador {
     }
 
 
+    public Espectador(String nombre, int i) {
+        //TODO Auto-generated constructor stub
+    }
+
+
     public String getNombre() {
         return nombre;
     }
