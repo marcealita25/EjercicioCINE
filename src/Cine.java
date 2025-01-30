@@ -25,6 +25,11 @@ public class Cine {
         this.salas = salas;
     }
 
+    public static void arrancarCine() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'arrancarCine'");
+    }
+
     
 
     

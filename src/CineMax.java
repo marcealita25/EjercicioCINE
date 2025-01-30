@@ -1,151 +1,113 @@
+public class CineMax {
 
-/*Clase con main
-- Crear Cine con 3 salas
-- Crear 3 espectadores
-- por cada espectador preguntarle 
-    + que pelicula quiere ver
-    + cuantas entradas quiere
-+ de la pelicula seleccionada mostrarle los asientos libres
-         O O O   
-         O O O    
-         X X X
-
-
-+ que pueda elegir fila y asientos o solo fila
-+ Cuando todos los espectadores hayan comprado la entrada mostrar un resumen por cada sala del cine*/
-
-import java.util.Scanner;
+    import java.util.Scanner;
 
 public class CineMax {
 
-    public static void main(String[] args) {
+    public static void main (String [] args) {
 
-
-
-        Espectador [][] butacasSala1;
-        
-        Sala sala1 = new Sala(1, "tiburon", null);
-        Sala sala2 = new Sala(2, "101 Dalmatas", null);
-        Sala sala3 = new Sala(3, "Srek", null);
-        Sala[] salas ={sala1, sala2, sala3};
-        
-        
-        private void crearCine(){
-            
-        }
-
-        Cine cine = new Cine("Cine ejemplo", salas);
-        Espectador  espectador1 = new Espectador("Daniel", "12345678R");
-        Espectador  espectador2 = new Espectador("Manuel", "23456781H");
-        Espectador  espectador3 = new Espectador("Maria", "45678921T");
-
-        Espectador [] espectador = {espectador1, espectador2, espectador3};
-
-
-        for (Espectador espectadores : espectador) {
-
-            System.out.println(espectadores.getNombre());
-
-            System.out.println(espectadores.getDni());
-
-            System.out.println("que pelicula quiere ver");
-
-            
-
-            Scanner scan = new Scanner(System.in);
-
-            String opcionPelicula = scan.nextLine();
-
-            System.out.println("El espectador "+espectadores.getNombre()+" ELIGIO LA PELICULA "+ opcionPelicula);
-
-            Scanner scanner = new Scanner(System.in);
-
-            System.out.println("Cuantas entradas quieres");
-
-            int entradas =  scanner.nextInt();
-            
-
-
-
-            System.out.println("-----------------------------");
-
-        }
-
-        private  void arrancarCine(){
-
-            Espectador [][] butacasSala1;
-        
-        Sala sala1 = new Sala(1, "tiburon", null);
-        Sala sala2 = new Sala(2, "101 Dalmatas", null);
-        Sala sala3 = new Sala(3, "Srek", null);
-        Sala[] salas ={sala1, sala2, sala3};
-
-        private void arrancarCine(){
-            Cine cine = crearCine();
-            Espectador[] espectadores = creaEspectadores();
-            gestionEntradas(Cine, espectadores);
-
-
-
-        }
-
-
-        }
-
-        private void gestionEntradas(Cine cine, Espectador[] espectador){
-            //recorrer los espectadores
-            for (Espectador espectador : espectadores) {
-                System.out.println();
-                System.out.println("El espectador"+espectador.getNombre() +"esta comprando entradas");
-
-                
-            }
-
-
-        }
-            
-
-       
-
-        private void mostrarCartelera (Cine cine){
-           sala [] salas = cine.getSalas();
-           for (Sala sala : salas) {
-            System.out.println(sala);
-            
-           }
-
-
-
-
-
-        }
-
-        private void mostrarbutacas(Sala sala){
-
-            Espectador[][] butacas = sala.getButacas();
-            for (int i = 0; i< butacas.length; i++);
-                for (int j = 0; j< butacas[j].length; j++);
-                System.out.println("\t");
-
-
-
-
-
-
-        }
+       CineMax cineMax = new CineMax();
+       CineMax  CineMax;
+    
+       Cine.arrancarCine();
 
     }
 
-    @Override
-    public String toString() {
-        return "CineMax []";
+    private Cine crearCine(){
+
+        Sala sala1 = new Sala(1, "tiburon", 1,2);
+        Sala sala2 = new Sala(2, "SREK",3, 2 );
+        Sala sala3 = new Sala(3, "101 Dalmatas", 4, 4);
+        Sala[] salas = {sala1, sala2, sala3};
+        Cine cine = new Cine("Cine Ejemplo", salas);
+        return cine;
+    }
+        
+        
+        
+    private Espectador [] crearEspectadores(){
+
+        Espectador  espectador1 = new Espectador("Daniel", "12345678R");
+        Espectador  espectador2 = new Espectador("Manuel", "23456781H");
+        Espectador  espectador3 = new Espectador("Maria", "45678921T");
+        Espectador [] espectadores = {espectador1, espectador2, espectador3};
+    
+        return espectadores;
+
+    }
+    private void arrancarCine(){
+
+        Cine cine = crearCine();
+        Espectador[] espectadores = crearEspectadores();
+        gestionEntradas(cine, espectadores);
+
+    }
+
+    private void gestionEntradas(Cine cine, Espectador[] espectadores){
+        //recorrer los espectadores
+        for (Espectador espectador : espectadores) {
+            System.out.println("\nEl espectador" + espectador.getNombre() + "está comprando entradas");
+            mostrarCartelera(cine);
+            int numSala = Utilidades.pideDatoNumerico("Introduce el numero de la sala");
+            int numEntradas = Utilidades.pideDatoNumerico(espectador.getNombre() + "que fila quieres");
+            Sala salaSeleccionada = cine.getSalas()[numSala-1];
+            mostrarbutacas(salaSeleccionada);
+             reservarButacas(salaSeleccionada.getButacas());
+        
+            
+         
+
+
+        }
+    }      
+
+    private void reservaButacas(Espectador[][] butacas, Espectador espectador){
+
+            
+        int numEntradas = Utilidades.pideDatoNumerico(espectador.getNombre() + "¿Cuantas entradas quieres");
+        int fila = Utilidades.pideDatoNumerico(espectador.getNombre() + "Introduce la fila");
+        int columna = Utilidades.pideDatoNumerico(espectador.getNombre() + "introduce columna");
+
+        butacas[fila-1][columna-1] = espectador;
+
+        /* int  numeros [][] =new int [2][2];
+      numeros [0][1] = 4;*/
+
+    
+
     }   
+    private void mostrarCartelera (Cine cine){
+
+        Sala [] salas = cine.getSalas();
+        for (Sala sala : salas) {
+         System.out.println(sala);
+                 
+        }
+
+    }
+    
+    private void mostrarbutacas(Sala sala ){
+
+        Espectador[][] butacas = sala.getButacas();
+        for (int i = 0; i< butacas.length; i++);{
+
+            for (int j = 0; j< butacas[j].length; j++);
+            if(butacas [][] == null){
+                System.out.println("\t");{
+             }else{
+                System.out.println("\tx");
+
+            System.out.println("");
+        }      
 
 
 
-
-
-
-
+    }
+     
+        
+}        
+     
+             
+     
 
 }
