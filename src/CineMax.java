@@ -40,6 +40,7 @@ public class CineMax {
         Cine cine = crearCine();
         Espectador[] espectadores = crearEspectadores();
         gestionEntradas(cine, espectadores);
+        resumen(Cine);
 
     }
 
@@ -52,8 +53,8 @@ public class CineMax {
             int numEntradas = Utilidades.pideDatoNumerico(espectador.getNombre() + "que fila quieres");
             Sala salaSeleccionada = cine.getSalas()[numSala-1];
             mostrarbutacas(salaSeleccionada);
-             reservarButacas(salaSeleccionada.getButacas());
-        
+            reservarButacas(salaSeleccionada.getButacas());
+         
             
          
 
@@ -86,7 +87,8 @@ public class CineMax {
 
     }
     
-    private void mostrarbutacas(Sala sala ){
+    private void mostrarbutacas(Sala sala );
+    
 
         Espectador[][] butacas = sala.getButacas();
         for (int i = 0; i< butacas.length; i++);{
@@ -103,11 +105,32 @@ public class CineMax {
 
 
     }
+
+    private void resumen (Cine cine){
+        System.out.println("nCine" + cine.getNombre());
+        sala [] salasCine = cine.getSalas();
+        for (Sala sala : salasCine) {
+            
+            System.out.println("\t" +sala.toString());
+            Espectador [][] butacas = sala.getButacas();
+            for ( Espectador [] filaEspectadores : butacas){
+                for ( Espectador espectador : filaEspectadores){
+                    System.out.println(espectador);
+                }
+            }
+            
+    
+
+        }
+
+
+    }
      
         
 }        
+
      
              
      
 
-}
+
